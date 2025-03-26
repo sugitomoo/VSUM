@@ -1,0 +1,81 @@
+Your task is to analyze an annotator's summarization tendencies and assign a score to each caption in a test video based on its importance. The score will range from 1 (least important) to 5 (most important).
+Your primary objective is to learn the annotator's summarization tendencies from training data and use this knowledge to assign scores to captions in the test video in a way that mimics the annotator’s unique style and preferences.
+
+Task Instructions:
+1. Input Information:
+    - Training Data: Provided as JSON objects for multiple videos, where:
+        - Each key represents a caption for a frame.
+        - Each value (1 to 5) indicates the importance score assigned by the annotator.
+
+2. Learning Annotator Tendencies:
+    - Analyze the training data to identify patterns, techniques, and stylistic preferences in the annotator’s summarization approach:
+        - Recognize recurring themes, stylistic techniques, or specific elements consistently assigned higher scores (e.g., 4 or 5) by the annotator.
+        - Identify commonalities in the captions given lower scores (e.g., 1 or 2) by the annotator.
+
+3. Scoring Captions in the Test Video:
+    - You will receive a JSON object representing the test video, where each caption serves as a key.
+    - Assign a numeric score to each caption based on its importance, ranging from 1 (least important) to 5 (most important).
+    - Use your judgment to determine how relevant and representative each caption is to the topic, mimicking the annotator's style.
+
+4. Output Requirements:
+    - Return a JSON object where:
+        - Each key is a caption.
+        - Each value is the assigned score (1 to 5).
+
+5. Output Format:The output JSON must look like this:
+[PSUEDO]
+
+Guidelines for Analysis:
+- Learning from Training Data:
+    - Identify and replicate the annotator's unique style and preferences in frame selection.
+    - Pay special attention to the types of frames, themes, and stylistic techniques the annotator frequently selects.
+- Scoring Captions:
+    - Ensure the scores reflect the relative importance of each caption to the topic of the video.
+    - Treat duplicate keys as separate entries and evaluate their inclusion independently.
+
+Training Data:
+Video 1 Name: "[TITLE 1]"
+Video 1:
+"[VIDEO 1]"
+
+Video 2 Name: "[TITLE 2]"
+Video 2: 
+"[VIDEO 2]"
+
+Video 3 Name: "[TITLE 3]"
+Video 3: 
+"[VIDEO 3]"
+
+Video 4 Name: "[TITLE 4]"
+Video 4: 
+"[VIDEO 4]"
+
+Video 5 Name: "[TITLE 5]"
+Video 5: 
+"[VIDEO 5]"
+
+Video 6 Name: "[TITLE 6]"
+Video 6:
+"[VIDEO 6]"
+
+Video 7 Name: "[TITLE 7]"
+Video 7: 
+"[VIDEO 7]"
+
+Video 8 Name: "[TITLE 8]"
+Video 8: 
+"[VIDEO 8]"
+
+
+For the test video, you will receive a pre-populated JSON object where all frames are initially marked as 1. 
+Your task is to assign a numeric score (1 to 5) to each caption based on its importance. 
+Use your analysis of the annotator's tendencies to determine the relevance and importance of each caption.
+
+Test Video:
+Test Video Name: "[TEST TITLE]"
+Test Video JSON:
+"[FORMAT]"
+
+Notes:
+    - Key Preservation: Ensure all keys (captions) from the test video JSON are retained in the output.
+    - Annotator Style: Mimic the annotator’s tendencies as closely as possible when scoring captions.
