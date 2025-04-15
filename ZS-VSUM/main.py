@@ -74,10 +74,7 @@ def main(args):
         video_name, video_file, change_points, n_frames, n_frame_per_seg, picks, user_summary, caption_path, user_score, original_user_score, caption_lines  = test_video_dataset[i]
         print(video_name)
         
-        if args.dataset == "SumMe":
-            annonum = 15
-            title = get_metadata(args, video_name)          
-        elif args.dataset == "TVSum":
+        if args.dataset == "TVSum":
             annonum = 20
             title, genre, query = get_metadata(args, video_name)
                 
@@ -86,14 +83,14 @@ def main(args):
             original_caption_str = '\n'.join(caption_lines) 
             format = convert2dict(caption_path, ratio)
             pseudo = pseudo_label(caption_path, ratio) 
-            original_captions, reduced_captions, original_caption_str, pseudo = process_captions_scores(caption_path, ratio) # 間引くver
+            original_captions, reduced_captions, original_caption_str, pseudo = process_captions_scores(caption_path, ratio) 
             prompt = exampled_prompt.replace('[FORMAT]',format).replace('[PSUEDO]',pseudo).replace('[TEST TITLE]',title).replace('[TEST CAPTIONS]', original_caption_str)
             
             response = client.chat.completions.create(
             model=LLM_model,
             response_format={ "type": "json_object" },
             messages=[
-                {"role": "system", "content": "You are an expert in text analysis and summarization, specializing in understanding the subtleties of human-generated content."},#optional
+                {"role": "system", "content": "You are an expert in text analysis and summarization, specializing in understanding the subtleties of human-generated content."},
                 {"role": "user", "content": prompt},
             ],
             temperature=0,

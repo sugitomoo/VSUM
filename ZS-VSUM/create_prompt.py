@@ -25,27 +25,6 @@ def find_ranges(user_summary):
         
     ranges.append([start, prev + 1])
     return np.array(ranges)
-  
-def binary_gt_label(file_path, annotator_gt):
-    """
-    Create a dictionary where captions included in summary are labeled as 1.
-
-    Args:
-        file_path (str): Path to the caption file.
-        annotator_gt (list): List of [start, end) ranges indicating summary captions.
-
-    Returns:
-        str: JSON string of caption: 0/1 mapping.
-    """
-    with open(file_path, 'r', encoding='utf-8') as file:
-        lines = file.readlines()
-        
-    result_dict = {line.strip(): 0 for line in lines}
-    
-    for start, end in annotator_gt:
-        for i in range(start - 1, end):
-            result_dict[lines[i].strip()] = 1
-    return json.dumps(result_dict, indent=4)
 
 def score_gt_label(file_path, original_anno_score):
     """
@@ -86,12 +65,7 @@ def create_training_data(args, annoindex):
         video_name, video_file, change_points, n_frames, n_frame_per_seg, picks, user_summary, caption_path, user_score, original_user_score, caption_lines  = train_video_dataset[i]
         annotator_gt = [[int(value) for value in sublist] for sublist in find_ranges(user_summary[annoindex])/15]
         
-        if args.dataset=="SumMe":
-            title = get_metadata(args, video_name)
-            gt_label = binary_gt_label(caption_path, annotator_gt)
-            exampled_prompt = exampled_prompt.replace(f'[VIDEO {(i+1)}]', gt_label).replace(f'[TITLE {(i+1)}]',title)
-
-        elif args.dataset=="TVSum":
+        if args.dataset=="TVSum":
             title, genre, query = get_metadata(args, video_name)
             original_anno_score = original_user_score[annoindex][::15]
             gt_label = score_gt_label(caption_path, original_anno_score)
