@@ -54,7 +54,7 @@ def adjust_framescore(original_length, reduced_scores, ratio):
 
 def main(args):
     set_random_seed(args.seed)
-    yaml_path = f"../datasets/{args.dataset}/ZS_videos.yml"
+    yaml_path = f"../datasets/{args.dataset}/FS_videos.yml"
     TOKEN = load('./settings.json')['token']
     client = OpenAI(api_key=TOKEN)
     LLM_model = "gpt-4o"
@@ -84,7 +84,7 @@ def main(args):
             format = convert2dict(caption_path, ratio)
             pseudo = pseudo_label(caption_path, ratio) 
             original_captions, reduced_captions, original_caption_str, pseudo = process_captions_scores(caption_path, ratio) 
-            prompt = exampled_prompt.replace('[FORMAT]',format).replace('[PSUEDO]',pseudo).replace('[TEST TITLE]',title).replace('[TEST CAPTIONS]', original_caption_str)
+            prompt = exampled_prompt.replace('[FORMAT]',format).replace('[PSEUDO]',pseudo).replace('[TEST TITLE]',title).replace('[TEST CAPTIONS]', original_caption_str)
             
             response = client.chat.completions.create(
             model=LLM_model,
@@ -95,7 +95,7 @@ def main(args):
             ],
             temperature=0,
             )
-            output_dir = f"../datasets/{args.dataset}/videos/{video_name}/ZS-VSUM"
+            output_dir = f"../datasets/{args.dataset}/videos/{video_name}/FS-VSUM"
             if not os.path.exists(output_dir):
                 os.mkdir(output_dir)
                     
@@ -119,7 +119,7 @@ def main(args):
     }
     dataset_fscore = np.mean([score for scores in video_fscore_dict.values() for score in scores])
 
-    result_dir = f"../datasets/{args.dataset}/results/ZS-VSUM"
+    result_dir = f"../datasets/{args.dataset}/results/FS-VSUM"
     os.makedirs(result_dir, exist_ok=True)
 
     result_json = {

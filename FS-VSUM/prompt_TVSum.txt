@@ -23,7 +23,7 @@ Task Instructions:
         - Each value is the assigned score (1 to 5).
 
 5. Output Format:The output JSON must look like this:
-[PSUEDO]
+[PSEUDO]
 
 Guidelines for Analysis:
 - Learning from Training Data:

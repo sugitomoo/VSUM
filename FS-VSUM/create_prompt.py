@@ -54,7 +54,7 @@ def create_training_data(args, annoindex):
     Returns:
         str: Constructed few-shot training prompt.
     """
-    yaml_path = f"../datasets/{args.dataset}/ZS_videos.yml"
+    yaml_path = f"../datasets/{args.dataset}/FS_videos.yml"
     exampled_prompt = open(f"./prompt_{args.dataset}.txt","r").read()
     
     keys_info = load_yaml(yaml_path)
