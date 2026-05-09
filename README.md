@@ -1,7 +1,7 @@
-# Language-Guided Benchmarks for Personalized Video Summarization 
+# Language-Guided Frameworks for Personalized Video Summarization 
 ### Pattern Analysis and Applications 2026, Special Issue on ACM Multimedia Asia 2024 (by invitation only)
 
-This is the official repository of our paper "**Language-Guided Benchmarks for Personalized Video Summarization**".
+This is the official repository of our paper "**Language-Guided Frameworks for Personalized Video Summarization**".
 
 In this paper, we propose two language-guided video summarization frameworks: Few-Shot Video SUMmarization (FS-VSUM) and Self-Supervised Video SUMmarization (SS-VSUM).
 
@@ -108,10 +108,10 @@ If you find our paper or code useful in your work, please **[★star]** this rep
 
 BibTeX:
 ```bibtex
-@inproceedings{sugihara2026language,
-  title={Language-Guided Benchmarks for Personalized Video Summarization},
+@article{sugihara2026language,
+  title={Language-Guided Frameworks for Personalized Video Summarization},
   author={Sugihara, Tomoya and Masuda, Shuntaro and Xiao, Ling and Yamasaki, Toshihiko},
-  booktitle={Pattern Analysis and Applications},
+  journal={Pattern Analysis and Applications},
   year={2026}
 }
 ```
