@@ -57,7 +57,7 @@ def main(args):
     yaml_path = f"../datasets/{args.dataset}/FS_videos.yml"
     TOKEN = load('./settings.json')['token']
     client = OpenAI(api_key=TOKEN)
-    LLM_model = "gpt-4o"
+    LLM_model = "gpt-5.2-2025-12-11"
     keys_info = load_yaml(yaml_path) 
     test_keys = keys_info[0]['test_keys']
     test_video_dataset = VideoSumDataset(test_keys, args.dataset) 
