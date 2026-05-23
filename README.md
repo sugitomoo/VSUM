@@ -75,7 +75,7 @@ Please run the following command for FS-VSUM method.
 python main.py --dataset=${dataset} 
 ```
 
-## Self-Supervised Video SUMmarization (SS-VSUM) [Sugihara+, ACMMM Asia 2024](https://dl.acm.org/doi/pdf/10.1145/3696409.3700273) 
+## Self-Supervised Video SUMmarization (SS-VSUM) [\[Sugihara+, ACMMM Asia 2024\]](https://dl.acm.org/doi/pdf/10.1145/3696409.3700273) 
 <p align="center">
 <img src="./fig/SS-VSUM.png" alt="model" width="80%">
 </p>
